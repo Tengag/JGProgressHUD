@@ -172,6 +172,12 @@ typedef NS_ENUM(NSUInteger, JGProgressHUDInteractionType) {
 @property (nonatomic, assign) BOOL square;
 
 /**
+ If the HUD should enable parallax effect (iOS 7).
+ 
+ @b Default: NO.
+ */
+@property (nonatomic, assign) BOOL enableParallax;
+/**
  The radius used for rounding the four corners of the HUD view.
  
  @b Default: 10.0.

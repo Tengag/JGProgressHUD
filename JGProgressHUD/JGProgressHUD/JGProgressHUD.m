@@ -71,6 +71,7 @@ unavailable
 @synthesize detailTextLabel = _detailTextLabel;
 @synthesize indicatorView = _indicatorView;
 @synthesize animation = _animation;
+@synthesize enableParallax = _enableParallax;
 
 @dynamic visible, contentView;
 
@@ -559,7 +560,7 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
                }
                );
         
-        if (iOS7) {
+        if (iOS7 && _enableParallax) {
             UIInterpolatingMotionEffect *x = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
             
             CGFloat maxMovement = 20.0f;
@@ -676,6 +677,16 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
     _square = square;
     
     [self updateHUDAnimated:YES animateIndicatorViewFrame:YES];
+}
+
+-(void)setEnableParallax:(BOOL)enableParallax
+{
+    if (self.square == enableParallax) {
+        return;
+    }
+    
+    _enableParallax = enableParallax;
+
 }
 
 - (void)setIndicatorView:(JGProgressHUDIndicatorView *)indicatorView {
